@@ -62,6 +62,7 @@ class AlienInvasion:
             self.ship.moving_left = False
 
     def _update_bullets(self):
+        
         self.bullets.update()
 
         # delete old bullets
@@ -69,6 +70,7 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         # print(len(self.bullets))
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
     def _update_aliens(self):
         self._check_fleet_edges()
@@ -100,7 +102,7 @@ class AlienInvasion:
         # self.aliens.add(alien)
     def _check_fleet_edges(self):
         for alien in self.aliens.sprites():
-            if alien.check_edges():
+            if alien.check_edge():
                 self._change_fleet_direction()
                 break
 
