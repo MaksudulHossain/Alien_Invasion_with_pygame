@@ -16,7 +16,7 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
-        self.stats = GameStats()
+        self.stats = GameStats(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -90,6 +90,8 @@ class AlienInvasion:
             # print("Ship hit!!!")
             self._ship_hit()
 
+        self._check_aliens_bottom()
+
     def _create_fleet(self):
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
@@ -105,19 +107,17 @@ class AlienInvasion:
             for alien_number in range(number_aliens_x):
                 self._create_alien(alien_number, row_number)
 
-
-
-
-        
-
-        # create first row of aliens
-
-
-        # self.aliens.add(alien)
     def _check_fleet_edges(self):
         for alien in self.aliens.sprites():
             if alien.check_edge():
                 self._change_fleet_direction()
+                break
+    
+    def _check_aliens_bottom(self):
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self._ship_hit()
                 break
 
     def _change_fleet_direction(self):
