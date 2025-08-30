@@ -18,8 +18,8 @@ class Bullet(Sprite):
         self.rect.y = self.y 
 
     def draw_bullet(self):
-        pygame.draw(self.screen, self.color, self.rect)
-        
+        pygame.draw.rect(self.screen, self.color, self.rect)
+
 
 
     
