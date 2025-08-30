@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite 
 
-class Alien:
+class Alien(Sprite):
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game.screen 
@@ -14,4 +14,4 @@ class Alien:
 
         self.x = float(self.rect.x)
 
-        
+
