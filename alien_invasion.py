@@ -26,6 +26,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -69,6 +70,9 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
         # print(len(self.bullets))
 
+    def _update_aliens(self):
+        self.aliens.update()
+        
     def _create_fleet(self):
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
