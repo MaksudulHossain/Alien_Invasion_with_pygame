@@ -21,15 +21,7 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
-
-            # delete old bullets
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            print(len(self.bullets))
-
-
+            self._update_bullets()
             self._update_screen()
 
     def _check_events(self):
@@ -63,6 +55,15 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+
+    def _update_bullets(self):
+        self.bullets.update()
+
+        # delete old bullets
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        # print(len(self.bullets))
 
 
     def _update_screen(self):
