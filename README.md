@@ -23,7 +23,8 @@ git clone https://github.com/MaksudulHossain/Alien_Invasion_with_pygame.git
 cd Alien_Invasion_with_pygame
 pip install -r requirements.txt
 ```
-
+## Game Flow
+![alt text](game_flowchart_overview-1.png)
 ## 🎮 How to Play
 ```
 python alien_invasion.py
