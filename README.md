@@ -27,6 +27,7 @@ pip install -r requirements.txt
 ![alt text](game_flowchart_overview-1.png)
 
 ## gif
+![alt text](images/alien_invasion.gif)
 
 ## 🎮 How to Play
 ```
