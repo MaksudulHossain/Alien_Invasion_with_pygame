@@ -42,9 +42,10 @@ alien_invasion/
 │── ship.py             # player ship class
 │── bullet.py           # bullet class
 │── alien.py            # alien class
-│── game_stats.py       # bullet class
-│── scoreboard.py.py    # alien class
-│── button.py            # graphics
+│── game_stats.py       # game statistics class
+│── scoreboard.py.py    # scoreboard class
+│── button.py           # play button class
+│── requirements.txt    # pygame version   
 └── README.md
 ```
 ## 🤝 Contributing
