@@ -21,6 +21,9 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        self.clock = pygame.time.Clock()
+
+
         # Track game statistics and scoreboard
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
@@ -46,6 +49,8 @@ class AlienInvasion:
                 self._update_aliens()
 
             self._update_screen()
+
+            self.clock.tick(144)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
