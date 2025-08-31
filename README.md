@@ -25,6 +25,9 @@ pip install -r requirements.txt
 ```
 ## Game Flow
 ![alt text](game_flowchart_overview-1.png)
+
+## gif
+
 ## 🎮 How to Play
 ```
 python alien_invasion.py
