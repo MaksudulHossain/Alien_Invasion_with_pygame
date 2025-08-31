@@ -1,35 +1,42 @@
-import sys 
-import pygame 
+import sys
+import pygame
 from time import sleep
 
+# Import game modules
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
-from alien import Alien 
+from alien import Alien
 from game_stats import GameStats
-from button import Button 
+from button import Button
 from scoreboard import Scoreboard
 
 class AlienInvasion:
+    """Main class to manage game state and behavior."""
     def __init__(self):
-        pygame.init() 
+        pygame.init()
         self.settings = Settings()
 
+        # Set up the game window
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        # Track game statistics and scoreboard
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
 
+        # Create ship, bullet group, and alien group
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
-        self._create_fleet()
+        self._create_fleet()  # Populate initial alien fleet
 
+        # Create Play button
         self.play_button = Button(self, "Play")
 
     def run_game(self):
+        """Main loop for the game."""
         while True:
             self._check_events()
 
@@ -41,19 +48,20 @@ class AlienInvasion:
             self._update_screen()
 
     def _check_events(self):
+        """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit() 
+                sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
- 
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
     def _check_play_button(self, mouse_pos):
+        """Start a new game when the Play button is clicked."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             self.settings.initialize_dynamic_settings()
